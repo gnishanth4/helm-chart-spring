@@ -6,18 +6,18 @@ pipeline {
   stages{
     stage('Put helm onto k8smaster'){
       steps{         
-         sshPut remote: remote, from: 'spring-petclinic', into: '.'
+         sshPut remote: remote, from: 'spring', into: '.'
       }  
     }
     
     stage("Deploy To Kubernetes"){      
       steps {        
         script{                 
-         sshCommand remote: remote, command: 'sudo helm install --generate-name spring-petclinic'             
+         sshCommand remote: remote, command: 'sudo helm install --generate-name spring'             
         }      
       }    
     }
-    stage('Run Kubectl Command '){
+    stage("Run Kubectl Command"){
       steps{        
          sshCommand remote: remote, command: "sudo kubectl get pods"
       }
