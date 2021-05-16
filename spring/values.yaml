@@ -101,8 +101,7 @@ service:
   # nodePort: 32015
 
   ## Service type can be set to ClusterIP, NodePort or LoadBalancer.
-  ##
-  type: ClusterIP
+  #
 
   ## Service annotations
   ##
