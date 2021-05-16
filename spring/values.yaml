@@ -93,12 +93,12 @@ affinity: {}
 
 service:
   enabled: true
-  httpPort: 8070
+  httpPort: 80
  
   ## If service.type is not set to NodePort, the following statement
   ## will be ignored.
   ##
-  # nodePort: 32015
+  nodePort: 32015
 
   ## Service type can be set to ClusterIP, NodePort or LoadBalancer.
   #
