@@ -44,7 +44,7 @@ spring:
     # secretName: configSecret
 
 ## The list of ports that your app listens on
-containerPort: 8080
+##containerPort: 8080
 
 extraEnv: {}
   ## Extra environment variables to be injected
@@ -93,7 +93,7 @@ affinity: {}
 
 service:
   enabled: true
-  httpPort: 80
+  httpPort: 8090
  
   ## If service.type is not set to NodePort, the following statement
   ## will be ignored.
