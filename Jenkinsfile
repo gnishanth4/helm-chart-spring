@@ -2,9 +2,12 @@ def remote = [name: 'k8 master', host: '172.31.13.36', user: 'ubuntu', password:
 pipeline {
   
   agent { label "java"}
+  options {      
+    buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+    }
    
   stages{
-    stage('Put helm onto k8smaster'){
+    stage('Put HelmChart onto k8smaster'){
       steps{         
          sshPut remote: remote, from: 'spring', into: '.'
       }  
@@ -12,7 +15,8 @@ pipeline {
     
     stage("Deploy To Kubernetes"){      
       steps {        
-        script{                 
+        script{ 
+         sshCommand remote: remote, command: 'sudo helm install --generate-name spring --dry-run' 
          sshCommand remote: remote, command: 'sudo helm install --generate-name spring'             
         }      
       }    
