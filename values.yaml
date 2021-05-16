@@ -5,8 +5,8 @@
 replicaCount: 1
 
 image:
-  repository: paulczar/petclinic
-  tag: 2.1.0.BUILD-SNAPSHOT
+  repository: gnishanth444/petclinic
+  tag: 5.3.4
   pullPolicy: IfNotPresent
 
 nameOverride: ""
@@ -92,8 +92,9 @@ tolerations: []
 affinity: {}
 
 service:
-  enabled: true
-  httpPort: 80
+  type: NodePort
+  port: 8090
+ 
   ## If service.type is not set to NodePort, the following statement
   ## will be ignored.
   ##
