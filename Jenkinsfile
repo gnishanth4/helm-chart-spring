@@ -16,8 +16,14 @@ pipeline {
     stage("Deploy To Kubernetes"){      
       steps {        
         script{ 
-             sshCommand remote: remote, command: 'sudo helm delete petclinic && sudo helm install petclinic spring --dry-run' 
-             sshCommand remote: remote, command: 'sudo helm install petclinic spring'                  
+          try{
+             sshCommand remote: remote, command: 'sudo helm install petclinic spring --dry-run' 
+             sshCommand remote: remote, command: 'sudo helm install petclinic spring'
+          }
+          catch(error){
+             sshCommand remote: remote, command: 'sudo helm upgrade petclinic spring'
+          }
+                  
         }      
       }    
     }
