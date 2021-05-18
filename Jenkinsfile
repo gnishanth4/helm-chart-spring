@@ -17,7 +17,7 @@ pipeline {
       steps {        
         script{ 
           try {
-            sshCommand remote: remote, command: 'helm delete petclinic' 
+            sshCommand remote: remote, command: 'helm delete spring' 
           }
           catch(error){
              sshCommand remote: remote, command: 'sudo helm install petclinic spring --dry-run' 
